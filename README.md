@@ -2,7 +2,7 @@
 
 ###Languages used : Python 2.7 and C++
 
-#Libraries Needed:
+###Libraries Needed:
 * Python Imaging Library (PIL)
 * Numpy
 * Pandas
@@ -10,12 +10,12 @@
 * OpenCV2
 
 
-Usage : 
+###Usage : 
 ```
 python solver.py <image file>
 ```
 
-For Training : 
+###For Training : 
 ```
 python create_training.py
 ```
