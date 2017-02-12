@@ -9,7 +9,9 @@
 * Sklearn
 * OpenCV2
 
-###Algorithm: K Nearest Neighbours
+###Classification Algorithm: K Nearest Neighbours
+
+###Heuristics used in solving sudoku: Minimum remaining values and Degree Heuristic
 
 ###Usage : 
 ```
