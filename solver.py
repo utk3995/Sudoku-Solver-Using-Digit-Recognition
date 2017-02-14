@@ -70,5 +70,6 @@ for i in range(0,9):
 outfile.close()
 
 os.system("./sudoku_solver")
-		
+os.system("rm testingdata.txt")
+os.system("rm sudoku_input.txt")
 
