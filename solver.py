@@ -14,10 +14,8 @@ filename = sys.argv[-1]
 
 img = cv2.imread(filename,0) 		#load in grascale
 img = cv2.GaussianBlur(img, (5, 5), 0)
-small = cv2.resize(img, (0,0), fx=0.5, fy=0.5) 	# resizing the image
-cropimg = small[107:467, 0:360] 		# will output a sudoku of size 360 * 360
-crop2 = cv2.resize(cropimg, (252, 252)) 
-(thresh, finalimg) = cv2.threshold(crop2, 128, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU) #convert it in binary image
+crop = cv2.resize(img, (252, 252)) 
+(thresh, finalimg) = cv2.threshold(crop, 128, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU) #convert it in binary image
 height, width = finalimg.shape[:2]
 
 for i in range(0,height):
@@ -71,5 +69,5 @@ outfile.close()
 
 os.system("./sudoku_solver")
 os.system("rm testingdata.txt")
-os.system("rm sudoku_input.txt")
+os.system("rm sudoku_input.txt")		
 
