@@ -149,7 +149,7 @@ void solve( vvi cur )
 int main ()
 {
     freopen("sudoku_input.txt","r",stdin);
-//    freopen("output.txt","w",stdout);
+    freopen("sudoku_output.txt","w",stdout);
     ios_base::sync_with_stdio(false);
     vvi start;
     for (int i=0;i<9;i++){

@@ -14,9 +14,11 @@ filename = sys.argv[-1]
 
 img = cv2.imread(filename,0) 		#load in grascale
 img = cv2.GaussianBlur(img, (5, 5), 0)
-crop = cv2.resize(img, (252, 252)) 
+crop = cv2.resize(img, (252, 252))
+
 (thresh, finalimg) = cv2.threshold(crop, 128, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU) #convert it in binary image
 height, width = finalimg.shape[:2]
+
 
 for i in range(0,height):
 	for j in range(0,width):
@@ -68,6 +70,26 @@ for i in range(0,9):
 outfile.close()
 
 os.system("./sudoku_solver")
+
+with open("sudoku_output.txt") as ansFile:
+    ans = [line.split() for line in ansFile]
+
+imgout = cv2.imread(filename)
+font = cv2.FONT_HERSHEY_SCRIPT_SIMPLEX
+for i in range(0,9):
+	for j in range(0,9):
+		if (valid[i][j] == 1):
+			vy=1
+		else:
+			cv2.putText(imgout,str(ans[i][j]),((j)*40+13,(i+1)*40-13), font, 0.7,(0,0,0),2)
+
+#cv2.putText(imgout,'0',(28,28), font, 1,(0,0,0),2)	
+cv2.imshow("Result",imgout)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
 os.system("rm testingdata.txt")
-os.system("rm sudoku_input.txt")		
+os.system("rm sudoku_input.txt")
+os.system("rm sudoku_output.txt")
+		
 
