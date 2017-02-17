@@ -8,6 +8,7 @@ using namespace std;
 #define fr first
 #define se second
 #define vvi vector < vi >
+map<vvi,int> already;
 
 int flag=0;
 
@@ -124,13 +125,17 @@ pvii mrv_heuristic ( vvi cur )
     return val;
 }
 
-void solve( vvi cur )
+int solve( vvi cur )
 {
     if (check(cur)){
         flag=1;
         print(cur);
-        return;
+        return 1;
     }
+    if(already.find(cur)!=already.end())
+	return 0;
+    already[cur] = 1;
+    
     pvii mrvval = mrv_heuristic(cur);
     vi canbe = mrvval.fr;
     int i = mrvval.se.fr;
@@ -138,12 +143,13 @@ void solve( vvi cur )
     for (int k=1;k<=9;k++){
         if (canbe[k] == 1){
             cur[i][j] = k;
-            solve(cur);
+            int p = solve(cur);
+            if(p==1)
+		return 1;
             cur[i][j] = 0;
         }
-        if (flag == 1)
-            return;
     }
+    return 0;
 }
 
 int main ()
@@ -161,5 +167,9 @@ int main ()
         }
         start.pb(temp);
     }
-    solve(start);
+  
+    int res = solve(start);
+  
+    if(res==0)
+	cout<<"-1";
 }

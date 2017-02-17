@@ -74,6 +74,16 @@ os.system("./sudoku_solver")
 with open("sudoku_output.txt") as ansFile:
     ans = [line.split() for line in ansFile]
 
+check = int(ans[0][0])
+
+if(check == -1):
+	print "****************Sudoku could not be read. Try for another Image.****************\n";
+	os.system("rm testingdata.txt")
+	os.system("rm sudoku_input.txt")
+	os.system("rm sudoku_output.txt")
+	exit()
+
+
 imgout = cv2.imread(filename)
 font = cv2.FONT_HERSHEY_SCRIPT_SIMPLEX
 for i in range(0,9):
