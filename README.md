@@ -29,4 +29,4 @@ This will create 2 files : **trainingdata.txt** and **traininglable.txt**
 
 ###ToDos:
 * Implement Neural Network for detection of digits
-* Currently the algorithm is working on a template for sudoku. Try to generalize it.
+* Use MNIST dataset for digit identification.
